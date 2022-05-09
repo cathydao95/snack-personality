@@ -8,7 +8,7 @@ const nextBtn = document.querySelector(".btn-next");
 const resultsBtn = document.querySelector(".btn-results");
 
 // RESET BUTTON
-const restartBtn = document.querySelector(".btn-reset");
+const resetBtns = document.querySelectorAll(".btn-reset");
 
 // DISPLAYS
 const displayResults = document.querySelector(".display-results");
@@ -66,8 +66,9 @@ function choiceCounter() {
         console.log(sum);
         containerResults.style.display = "block";
         sweetPersonality.style.display = "block";
-      } else if ((sum = 1)) {
+      } else {
         let randomNum = Math.random() * 2;
+        console.log(randomNum);
         if (randomNum > 1) {
           containerResults.style.display = "block";
           saltPersonality.style.display = "block";
@@ -91,6 +92,7 @@ function showResults(e) {
 
 function restartQuiz() {
   errorMessage.innerText = "";
+  error2Message.innerText = "";
   sum = 0;
   displayResults.style.display = "none";
   saltPersonality.style.display = "none";
@@ -112,7 +114,9 @@ function startGame() {
   startBtn.addEventListener("click", scrollDown);
   nextBtn.addEventListener("click", validateClick);
   resultsBtn.addEventListener("click", showResults);
-  restartBtn.addEventListener("click", restartQuiz);
+  resetBtns.forEach((resetBtn) => {
+    resetBtn.addEventListener("click", restartQuiz);
+  });
 }
 
 startGame();
