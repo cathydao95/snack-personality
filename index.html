@@ -5,142 +5,83 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/style.css" />
-    <title>Quiz: What Food Matches Your Personality?</title>
+    <title>Food Personality Quiz</title>
   </head>
   <body>
-    <main>
+    <main class="container">
       <div>
-        <h1>Find Out Your Personality By Picking a Food for Every Meal!</h1>
-        <p>
-          If you've spent years wondering what your food prefereces says about
-          you, say no more!
-        </p>
-        <button class="start-Btn">Let's Get Started!</button>
+        <div class="intro-wrapper">
+          <h1>Food Personality Quiz</h1>
+          <p>Find out what your snack options say about your personaity!</p>
+                  <input type="button" value="Start the Quiz!" class="btn">
+        </div>
       </div>
     </main>
+
     <form>
-      <!-- Question 1 -->
-      <section class="container breakfast">
-        <div>
-          <span>1.</span>
-        </div>
-        <div>
-          <h2>It's breakfast time. What do you go for?</h2>
-        </div>
-        <div>
-          <input
-            type="radio"
-            name="breakfast"
-            id="sweets-1"
-            value="sweets"
-            required="required"
-          />
-          <label for="sweets-1">Delicious chocolate chip pancakes!</label>
-        </div>
-        <div>
-          <input type="radio" name="breakfast" id="salt-1" value="salt" />
-          <label for="salt-1">Eggs Benedicts with a side of potatoes!</label>
-        </div>
-        <input type="button" value="Next" class="btn-Next" />
-      </section>
+          <!-- Question 1 -->
+          <section class="container">
+            <div class="wrapper">
+              <div class="q-num"><span>1.</span></div>
+              <div>
+                <h2>It's time for an afternoon snack. What do you go for?</h2>
+                <div class="question">
+                  <input type="radio" id="sweet-1" name="afternoon-snack" value="sweet" required="required">
+                  <label for="sweet-1">Fresh fruit and chocolate!</label>
+                </div>
+                <div class="question">
+                  <input type="radio" id="salt-1" name="afternoon-snack" value="salt" require="required">
+                  <label for="salt-1">Popcorn or crackers with hummus.</label>
+                </div>
+                <div>
+                  <input type="button" value="Next" class="btn btn-next">
+                </div>
+              </div>
+              
+            </div>
+          </section>
 
-      <!-- Question 2 -->
-      <section class="container snack">
-        <div>
-          <span>2.</span>
-        </div>
-        <div>
-          <h2>Now, choose a little snack before lunch:</h2>
-        </div>
-        <div>
-          <input
-            type="radio"
-            name="snack"
-            id="sweets-2"
-            value="sweets"
-            required="required"
-          />
-          <label for="sweets-2">Good ol' tasty fruit</label>
-        </div>
-        <div>
-          <input type="radio" name="snack" id="salt-2" value="salt" />
-          <label for="salt-2">A savory bag of chips.</label>
-        </div>
-        <input type="button" value="Next" class="btn-Next" />
-      </section>
+          <!-- Question 2 -->
+          <section class="container">
+            <div class="wrapper">
+              <div class="q-num"><span>2.</span></div>
+              <div><h2>It's move night! What would be best paired with a movie?</h2>
+                <div class="question">
+                  <input type="radio" id="salt-2" name="movie-snack" value="salt" require="required">
+                  <label for="salt-2">The only correct choice is Potato Chips.</label>
+                </div>
+                <div class="question">
+                  <input type="radio" id="sweet-2" name="movie-snack" value="sweet" required="required">
+                  <label for="sweet-2">Nothing pairs with a movie like warm and fresh chocolate chip cookies!</label>
+                </div>
+                <div>
+                  <input type="button" value="Next" class="btn btn-next">
+                </div></div>
+            </div>
+          </section>
 
-      <!-- Question 3 -->
+          <!-- Results Page -->
+          <section class="container">
+            <div >
+              <input type="button" value="Get Results" class="btn btn-next">
+            </div>
+          </section>
 
-      <section class="container lunch">
-        <div>
-          <span>3.</span>
-        </div>
-        <div>
-          <h2>What's for lunch?</h2>
-        </div>
-        <div>
-          <input
-            type="radio"
-            name="snack"
-            id="sweets-3"
-            value="sweets"
-            required="required"
-          />
-          <label for="sweets-3">Leftovers</label>
-        </div>
-        <div>
-          <input type="radio" name="snack" id="salt-3" value="salt" />
-          <label for="salt-3">Burgers and with a side of fries</label>
-        </div>
-        <input type="button" value="Next" class="btn-Next" />
-      </section>
-
-      <!-- Question 4 -->
-      <section class="container dinner">
-        <div>
-          <span>2.</span>
-        </div>
-        <div>
-          <h2>What's cooking for dinner?</h2>
-        </div>
-        <div>
-          <input
-            type="radio"
-            name="snack"
-            id="sweets-4"
-            value="sweets"
-            required="required"
-          />
-          <label for="sweets-4">Yummm, pasta with a side salad</label>
-        </div>
-        <div>
-          <input type="radio" name="snack" id="salt-4" value="salt" />
-          <label for="salt-4">Tacos and roasted vegetables</label>
-        </div>
-        <input type="button" value="Next" class="btn-Next" />
-      </section>
-
-      <!-- SUBMIT -->
-      <section>
-        <div>
-          <p>Read for your results?</p>
-          <input
-            type="submit"
-            value="Yes, please!"
-            class="btn btn-scroll-down btn-light"
-          />
-        </div>
-      </section>
-
-      <!-- Results -->
-      <section></section>
-
-      <!-- RESET QUIZ -->
-      <section></section>
-
-      <!-- END -->
+          <!-- Results of Quiz -->
+          <section class="container">
+            <div>
+              
+            </div>
+            <input type="reset" value="Restart Quiz" class="btn btn-reset">
+          </section>
     </form>
 
-    <script src="/script.js"></script>
-  </body>
+
+
+      
+      <script src="./js/main.js"></script>
+    
+    </body>
+    
+    </html>
 </html>

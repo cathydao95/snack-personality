@@ -1,5 +1,70 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* MAIN SECTION */
+.intro-wrapper {
+  text-align: center;
+}
+h1 {
+  font-size: 3.5rem;
+}
+
+p {
+  font-size: 1.5rem;
+}
+h2 {
+  font-size: 2.5rem;
+  margin: 0;
+  padding-bottom: 1rem;
+}
+
+/* GENERAL STYLES */
+/* QUESTIONS */
+
+.q-num {
+  flex-basis: 30%;
+  text-align: center;
+}
+
+span {
+  font-size: 5rem;
+}
 .container {
   display: flex;
   flex-direction: column;
-  margin: 50px;
+  justify-content: center;
+  align-items: center;
+  background: rgb(124, 176, 236);
+  height: 100vh;
+  width: 100vw;
+}
+
+.wrapper {
+  background-color: rgb(250, 236, 236);
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+}
+
+.btn {
+  font-size: 1.5rem;
+  padding: 1rem 3rem;
+  margin: 2rem;
+}
+
+label {
+  font-size: 1.5rem;
+}
+
+.question {
+  padding-bottom: 0.5rem;
+}
+
+.btn-next {
+  padding: 1rem 5rem;
 }
