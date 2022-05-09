@@ -9,6 +9,8 @@ const containerResults = document.querySelector(".container-results");
 const question = document.querySelector(".q-num");
 const errorMessage = document.querySelector(".error1");
 
+const inputResults = document.getElementsByName("afternoon-snack");
+
 const snackPersonality = {
   //OBJECT: Holds possible quiz results
   results: {
@@ -37,23 +39,23 @@ function scrollDown() {
 
 // WHY CAN'T GET BOTH BUTTONS TO WORK?!!? BC QUERY SELECTOR?
 function validateClick() {
-  // IF ONE OF THE BUTTONS ARE NOT CLICKED, INNER TEXT CHANGED TO PLEASE CLICK!!!!
-  if (!document.querySelector('input[name="afternoon-snack"]').checked) {
-    errorMessage.innerText = "Please select an answer";
-  } else {
-    errorMessage.innerText = "";
-    scrollDown();
-    console.log("successful");
-  }
-
-  // IF BUTTONS ARE CLICKED, SCROLL DOWN TO NEXT QUESTION
-  //   if (document.querySelector('input[name="afternoon-snack"]').checked) {
-  //     console.log("HELLO");
-  //     scrollDown();
-  //   } else {
-  //     console.log("PLEASE CHECK SOMETHING");
-  //   }
+  inputResults.forEach((inputResult) => {
+    if (inputResult.checked) {
+      errorMessage.innerText = "";
+      scrollDown();
+    } else {
+      errorMessage.innerText = "Please select an answer";
+    }
+  });
 }
+
+// IF BUTTONS ARE CLICKED, SCROLL DOWN TO NEXT QUESTION
+//   if (document.querySelector('input[name="afternoon-snack"]').checked) {
+//     console.log("HELLO");
+//     scrollDown();
+//   } else {
+//     console.log("PLEASE CHECK SOMETHING");
+//   }
 
 function validateSClick() {
   if (document.querySelector('input[name="movie-snack"]').checked) {

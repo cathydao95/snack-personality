@@ -89,5 +89,34 @@ label {
 /* error message */
 .error1 {
   color: red;
-  background-color: rgb(251, 179, 46);
+  background-color: transparent;
+}
+
+/* results img */
+.container-results {
+  display: none;
+}
+
+.img-result {
+  width: 100%;
+}
+
+.result-description {
+  font-size: 1.5rem;
+  background-color: transparent;
+}
+
+.display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.display-sweets {
+  display: none;
+}
+
+.display-salt {
+  display: none;
 }
