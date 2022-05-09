@@ -85,3 +85,9 @@ label {
 .container-r {
   background-color: rgb(251, 179, 46);
 }
+
+/* error message */
+.error1 {
+  color: red;
+  background-color: rgb(251, 179, 46);
+}

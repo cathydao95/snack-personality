@@ -7,6 +7,7 @@ const restartBtn = document.querySelector(".btn-reset");
 const displayResults = document.querySelector(".display-results");
 const containerResults = document.querySelector(".container-results");
 const question = document.querySelector(".q-num");
+const errorMessage = document.querySelector(".error1");
 
 const snackPersonality = {
   //OBJECT: Holds possible quiz results
@@ -38,8 +39,9 @@ function scrollDown() {
 function validateClick() {
   // IF ONE OF THE BUTTONS ARE NOT CLICKED, INNER TEXT CHANGED TO PLEASE CLICK!!!!
   if (!document.querySelector('input[name="afternoon-snack"]').checked) {
-    console.log("PLEASE CHECK SOMETHING");
+    errorMessage.innerText = "Please select an answer";
   } else {
+    errorMessage.innerText = "";
     scrollDown();
     console.log("successful");
   }
