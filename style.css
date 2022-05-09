@@ -95,22 +95,20 @@ label {
 /* results img */
 .container-results {
   display: none;
+  padding-top: 5rem;
 }
 
 .img-result {
-  width: 100%;
+  width: 60%;
 }
 
 .result-description {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   background-color: transparent;
 }
 
-.display {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.display-results {
+  text-align: center;
 }
 
 .display-sweets {

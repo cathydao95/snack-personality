@@ -1,11 +1,14 @@
 const startBtn = document.querySelector(".btn-start");
-const nextBtn = document.querySelector(".btn-next");
+const nextBtns = document.querySelectorAll(".btn-next");
 // WHY CANT SHARE SAME EVENT LISTENER?
-const nextBtn2 = document.querySelector(".btn2-next");
+
 const resultsBtn = document.querySelector(".btn-results");
 const restartBtn = document.querySelector(".btn-reset");
 const displayResults = document.querySelector(".display-results");
 const containerResults = document.querySelector(".container-results");
+const sweetPersonality = document.querySelector(".display-sweets");
+const saltPersonality = document.querySelector(".display-salt");
+
 const question = document.querySelector(".q-num");
 const errorMessage = document.querySelector(".error1");
 
@@ -16,21 +19,18 @@ const snackPersonality = {
   results: {
     sweet: {
       name: `ice cream`,
-      img: `./sweet.jpg`,
-      class: `img-result img-result-sweets`,
-      alt: `picture of ice cream.`,
-      description: `ou live on the wild side and are often described as living a carefree lifestyle with few regrets. You love to stand out and feel special. A sweet tooth can also be linked to a strong willingness to help out as well as emotional vulnerability..`,
       counter: 0,
     },
     salt: {
       name: `potato chips`,
-      img: `./salt.jpg`,
-      class: `img-result img-result-salt`,
-      alt: `picture of chips.`,
-      description: `You go with the flow. Hirsch’s data reveals salt lovers have an “external locus of control,” meaning they believe a higher or outside force, not their own actions, determine their fate. You also crave small rewards and immediate gratification, thus making you a competitive and worthy`,
       counter: 0,
     },
   },
+};
+
+const userChoice = {
+  choice1: document.getElementsByName("afternoon-snack").value,
+  choice2: document.getElementsByName("movie-snack").value,
 };
 
 function scrollDown() {
@@ -57,21 +57,58 @@ function validateClick() {
 //     console.log("PLEASE CHECK SOMETHING");
 //   }
 
-function validateSClick() {
-  if (document.querySelector('input[name="movie-snack"]').checked) {
-    console.log("HELLO");
-    scrollDown();
-  } else {
-    console.log("PLEASE CHECK SOMETHING");
+// function validateSClick() {
+//   if (document.querySelector('input[name="movie-snack"]').checked) {
+//     console.log("HELLO");
+//     scrollDown();
+//   } else {
+//     console.log("PLEASE CHECK SOMETHING");
+//   }
+// }
+
+// function resetCounter() {
+//   snackPersonality.sweet.counter = 0;
+//   snackPersonality.salt.counter = 0;
+// }
+
+function choiceCounter() {
+  for (const [ley, value] of Object.entries(userChoice)) {
+    if (value === "salt") {
+      snackPersonality.results.salt.counter++;
+    } else {
+      snackPersonality.results.sweet.counter++;
+    }
   }
 }
 
-function printResults() {}
+//   userChoice.forEach((choice) => {
+//     if (choice.value === "salt") {
+//       snackPersonality.salt.counter++;
+//     } else {
+//       snackPersonality.sweet.counter++;
+//     }
+//   });
+// }
+
+function printResults() {
+  if (
+    snackPersonality.results.salt.counter <
+    snackPersonality.results.sweet.counter
+  ) {
+    containerResults.style.display = "block";
+    saltPersonality.style.display = "block";
+  } else {
+    containerResults.style.display = "block";
+    sweetPersonality.style.display = "block";
+  }
+}
 
 function showResults(e) {
   e.preventDefault();
-  scrollDown();
+  // resetCounter();
+  choiceCounter();
   printResults();
+  scrollDown();
 }
 
 function restartQuiz() {
@@ -85,8 +122,8 @@ function restartQuiz() {
 
 function startGame() {
   startBtn.addEventListener("click", scrollDown);
-  nextBtn.addEventListener("click", validateClick);
-  nextBtn2.addEventListener("click", validateSClick);
+  nextBtns.forEach((btn) => btn.addEventListener("click", validateClick));
+
   resultsBtn.addEventListener("click", showResults);
   restartBtn.addEventListener("click", restartQuiz);
 }
