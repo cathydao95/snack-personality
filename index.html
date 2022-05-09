@@ -19,7 +19,7 @@
         <div class="intro-wrapper">
           <h1>QUIZ: SNACK PERSONALITY</h1>
           <p>Find out what your snack choices say about your personality!</p>
-          <input type="button" value="start" class="btn btn-start" />
+          <input type="button" value="Start" class="btn btn-start" />
         </div>
       </div>
     </main>
@@ -36,7 +36,7 @@
                 type="radio"
                 id="sweet-1"
                 name="afternoon-snack"
-                value="sweet"
+                value="0"
                 required="required"
               />
               <label for="sweet-1">Fresh fruit and chocolate!</label>
@@ -46,14 +46,13 @@
                 type="radio"
                 id="salt-1"
                 name="afternoon-snack"
-                value="salt"
-                require="required"
+                value="1"
               />
               <label for="salt-1">Popcorn or crackers with hummus.</label>
             </div>
-            <p class="error1"></p>
+            <p class="error-msg error1"></p>
             <div>
-              <input type="button" value="next" class="btn btn-next" />
+              <input type="button" value="Next" class="btn btn-next" />
             </div>
           </div>
         </div>
@@ -70,7 +69,7 @@
                 type="radio"
                 id="salt-2"
                 name="movie-snack"
-                value="salt"
+                value="1"
                 require="required"
               />
               <label for="salt-2"
@@ -78,13 +77,7 @@
               >
             </div>
             <div class="question">
-              <input
-                type="radio"
-                id="sweet-2"
-                name="movie-snack"
-                value="sweet"
-                required="required"
-              />
+              <input type="radio" id="sweet-2" name="movie-snack" value="0" />
               <label for="sweet-2"
                 >Nothing pairs with a movie like warm and fresh chocolate chip
                 cookies!</label
@@ -92,21 +85,18 @@
             </div>
             <p class="error-msg error2"></p>
             <div>
-              <input type="button" value="Next" class="btn btn-next" />
+              <input
+                type="Submit"
+                value="Get Results"
+                class="btn btn-results"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Results Page -->
-      <section class="container container-r">
-        <div>
-          <input type="submit" value="Get Results" class="btn btn-results" />
-        </div>
-      </section>
-
       <!-- Results of Quiz -->
-      <section class="container container-results">
+      <section class="container container-results final-results">
         <div class="display-results display-sweets">
           <img class="img-result" src="/sweet.jpg" />
           <p class="result-description">
@@ -130,11 +120,6 @@
         <input type="reset" value="Restart Quiz" class="btn btn-reset" />
       </section>
     </form>
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.js"
-      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-      crossorigin="anonymous"
-    ></script>
     <script src="/script.js"></script>
   </body>
 </html>

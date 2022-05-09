@@ -1,129 +1,116 @@
+// START BUTTON
 const startBtn = document.querySelector(".btn-start");
-const nextBtns = document.querySelectorAll(".btn-next");
-// WHY CANT SHARE SAME EVENT LISTENER?
 
+// NEXT BUTTONS
+const nextBtn = document.querySelector(".btn-next");
+
+// RESULTS BUTTON
 const resultsBtn = document.querySelector(".btn-results");
+
+// RESET BUTTON
 const restartBtn = document.querySelector(".btn-reset");
+
+// DISPLAYS
 const displayResults = document.querySelector(".display-results");
 const containerResults = document.querySelector(".container-results");
 const sweetPersonality = document.querySelector(".display-sweets");
 const saltPersonality = document.querySelector(".display-salt");
 
-const question = document.querySelector(".q-num");
+// ERROR MESSAGE
 const errorMessage = document.querySelector(".error1");
+const error2Message = document.querySelector(".error2");
 
-const inputResults = document.getElementsByName("afternoon-snack");
+// AFTERNOON SNACK NAMES
+// const inputResults = document.getElementsByName("afternoon-snack");
+const inputResults = document.querySelectorAll('input[name="afternoon-snack"]');
 
-const snackPersonality = {
-  //OBJECT: Holds possible quiz results
-  results: {
-    sweet: {
-      name: `ice cream`,
-      counter: 0,
-    },
-    salt: {
-      name: `potato chips`,
-      counter: 0,
-    },
-  },
-};
+const finalResults = document.querySelectorAll('input[name="movie-snack"]');
 
-const userChoice = {
-  choice1: document.getElementsByName("afternoon-snack").value,
-  choice2: document.getElementsByName("movie-snack").value,
-};
+// IS VALID TRUE?
+let isValid;
+let sum;
 
+// FUNCTION TO SCROLL DOWN WHEN BUTTON CLICKED
 function scrollDown() {
   window.scrollBy(0, window.innerHeight);
 }
 
-// WHY CAN'T GET BOTH BUTTONS TO WORK?!!? BC QUERY SELECTOR?
+// FUNCTION TO VALIDATE IF QUESTION IS ANSWERED
 function validateClick() {
-  inputResults.forEach((inputResult) => {
-    if (inputResult.checked) {
+  for (let result of inputResults) {
+    if (result.checked) {
+      isValid = true;
+      console.log(result.value);
       errorMessage.innerText = "";
       scrollDown();
-    } else {
-      errorMessage.innerText = "Please select an answer";
     }
-  });
-}
-
-// IF BUTTONS ARE CLICKED, SCROLL DOWN TO NEXT QUESTION
-//   if (document.querySelector('input[name="afternoon-snack"]').checked) {
-//     console.log("HELLO");
-//     scrollDown();
-//   } else {
-//     console.log("PLEASE CHECK SOMETHING");
-//   }
-
-// function validateSClick() {
-//   if (document.querySelector('input[name="movie-snack"]').checked) {
-//     console.log("HELLO");
-//     scrollDown();
-//   } else {
-//     console.log("PLEASE CHECK SOMETHING");
-//   }
-// }
-
-// function resetCounter() {
-//   snackPersonality.sweet.counter = 0;
-//   snackPersonality.salt.counter = 0;
-// }
-
-function choiceCounter() {
-  for (const [ley, value] of Object.entries(userChoice)) {
-    if (value === "salt") {
-      snackPersonality.results.salt.counter++;
-    } else {
-      snackPersonality.results.sweet.counter++;
+    if (!isValid) {
+      errorMessage.innerText = "Please select an answer";
     }
   }
 }
 
-//   userChoice.forEach((choice) => {
-//     if (choice.value === "salt") {
-//       snackPersonality.salt.counter++;
-//     } else {
-//       snackPersonality.sweet.counter++;
-//     }
-//   });
-// }
-
-function printResults() {
-  if (
-    snackPersonality.results.salt.counter <
-    snackPersonality.results.sweet.counter
-  ) {
-    containerResults.style.display = "block";
-    saltPersonality.style.display = "block";
-  } else {
-    containerResults.style.display = "block";
-    sweetPersonality.style.display = "block";
+function choiceCounter() {
+  for (let finalResult of finalResults) {
+    if (finalResult.checked) {
+      error2Message.innerText = "";
+      sum = [...document.querySelectorAll("input[type=radio]:checked")].reduce(
+        (acc, val) => acc + Number(val.value),
+        0
+      );
+      if (sum > 1) {
+        console.log(sum);
+        containerResults.style.display = "block";
+        saltPersonality.style.display = "block";
+      } else if (sum < 1) {
+        console.log(sum);
+        containerResults.style.display = "block";
+        sweetPersonality.style.display = "block";
+      } else if ((sum = 1)) {
+        let randomNum = Math.random() * 2;
+        if (randomNum > 1) {
+          containerResults.style.display = "block";
+          saltPersonality.style.display = "block";
+        } else {
+          containerResults.style.display = "block";
+          sweetPersonality.style.display = "block";
+        }
+      }
+    } else {
+      error2Message.innerText = "Please select an answer";
+    }
   }
 }
 
 function showResults(e) {
   e.preventDefault();
-  // resetCounter();
   choiceCounter();
-  printResults();
+  // printResults();
   scrollDown();
 }
 
 function restartQuiz() {
+  errorMessage.innerText = "";
+  sum = 0;
+  displayResults.style.display = "none";
+  saltPersonality.style.display = "none";
+  sweetPersonality.style.display = "block";
+  containerResults.style.display = "none";
+  startGame();
   window.scrollTo({
     top: 0,
     behavior: "smooth",
   });
-  displayResults.style.display = "none";
-  containerResults.style.display = "none";
 }
 
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+};
+
+// Function to Start the Game and Listento Button Clicks
 function startGame() {
   startBtn.addEventListener("click", scrollDown);
-  nextBtns.forEach((btn) => btn.addEventListener("click", validateClick));
-
+  nextBtn.addEventListener("click", validateClick);
   resultsBtn.addEventListener("click", showResults);
   restartBtn.addEventListener("click", restartQuiz);
 }

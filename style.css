@@ -82,19 +82,22 @@ label {
 }
 
 .container-q1,
-.container-r {
+.container-r,
+.container-results {
   background-color: rgb(251, 179, 46);
 }
 
 /* error message */
-.error1 {
+.error-msg {
   color: red;
   background-color: transparent;
 }
 
 /* results img */
-.container-results {
-  display: none;
+.final-results {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding-top: 5rem;
 }
 
@@ -109,6 +112,7 @@ label {
 
 .display-results {
   text-align: center;
+  padding: 0px 2rem;
 }
 
 .display-sweets {
@@ -116,5 +120,9 @@ label {
 }
 
 .display-salt {
+  display: none;
+}
+
+.container-results {
   display: none;
 }
