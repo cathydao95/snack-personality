@@ -11,10 +11,10 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/style.css" />
-    <title>Food Personality Quiz</title>
+    <title>Quiz: Snack Personality</title>
   </head>
   <body>
-    <main class="container container-g">
+    <main class="container container-g" title="candy">
       <div>
         <div class="intro-wrapper">
           <h1>QUIZ: SNACK PERSONALITY</h1>
@@ -51,7 +51,7 @@
               <label for="salt-1">Popcorn or crackers with hummus.</label>
             </div>
             <p class="error-msg error1"></p>
-            <div>
+            <div class="'btn-container">
               <input type="button" value="Next" class="btn btn-next" />
             </div>
           </div>
@@ -70,7 +70,7 @@
                 id="salt-2"
                 name="movie-snack"
                 value="1"
-                require="required"
+                required="required"
               />
               <label for="salt-2"
                 >The only correct choice is Potato Chips.</label
@@ -84,38 +84,42 @@
               >
             </div>
             <p class="error-msg error2"></p>
-            <div>
-              <input
-                type="Submit"
-                value="Get Results"
-                class="btn btn-results"
-              />
+            <div class="'btn-container">
+              <input type="button" value="Next" class="btn btn-next-test" />
             </div>
           </div>
+        </div>
+      </section>
+
+      <section class="container container-submit">
+        <div class="submit-wrapper">
+          <p class="error-msg error3"></p>
+          <input type="submit" value="Get Results" class="btn btn-results" />
         </div>
       </section>
 
       <!-- Results of Quiz -->
       <section class="container container-results final-results">
         <div class="display-results display-sweets">
-          <img class="img-result" src="/sweet.jpg" />
+          <img
+            class="img-result"
+            src="/assets/sweet.jpg"
+            alt="pic of icecream"
+          />
           <p class="result-description">
-            You live on the wild side and are often described as living a
-            carefree lifestyle with few regrets. You love to stand out and feel
-            special. A sweet tooth can also be linked to a strong willingness to
-            help out as well as emotional vulnerability.
+            You have a sweet tooth! You are creative, ambitious, and
+            adventurous. You live on the wild side and try to live your life
+            with few regrets.
           </p>
           <input type="reset" value="Restart Quiz" class="btn btn-reset" />
         </div>
 
         <div class="display-results display-salt">
-          <img class="img-result" src="/salt.jpg" />
+          <img class="img-result" src="/assets/salt.jpg" alt="pick of chips" />
           <p class="result-description">
-            You go with the flow. Hirsch’s data reveals salt lovers have an
-            “external locus of control,” meaning they believe a higher or
-            outside force, not their own actions, determine their fate. You also
-            crave small rewards and immediate gratification, thus making you a
-            competitive and worthy.
+            You prefer savory foods! You go with the flow and like to lay low.
+            You crave small rewards and immediate gratification, thus making you
+            a competitive and worthy adversary.
           </p>
           <input type="reset" value="Restart Quiz" class="btn btn-reset" />
         </div>
