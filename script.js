@@ -4,14 +4,11 @@ const nextBtn = document.querySelector(".btn-next");
 const nextBtnt = document.querySelector(".btn-next-test");
 const resultsBtn = document.querySelector(".btn-results");
 const resetBtns = document.querySelectorAll(".btn-reset");
-
 // DISPLAYS
 const displayResults = document.querySelector(".display-results");
 const containerResults = document.querySelector(".container-results");
 const sweetPersonality = document.querySelector(".display-sweets");
-const saltPersonality = document.querySelector(".display-salt");
-
-// ERROR MESSAGES
+const saltPersonality = document.querySelector(".display-salt"); // ERROR MESSAGES
 const errorMessage = document.querySelector(".error1");
 const error2Message = document.querySelector(".error2");
 const error3Message = document.querySelector(".error3");
@@ -21,19 +18,19 @@ const inputResults = document.querySelectorAll('input[name="afternoon-snack"]');
 const finalResults = document.querySelectorAll('input[name="movie-snack"]');
 const radioBtns = document.querySelectorAll('input[type="radio"]');
 
+// FUNCTIONS
 let sum;
 
-// FUNCTION TO SCROLL DOWN WHEN BUTTON CLICKED
+//SCROLL DOWN WHEN BUTTON CLICKED
 function scrollDown() {
   window.scrollBy(0, window.innerHeight);
 }
 
-// FUNCTION TO VALIDATE IF QUESTION 1ST QUESTION ANSWERED
+//VALIDATE IF QUESTION 1ST QUESTION ANSWERED
 function validateClick() {
   let newArray = Array.from(inputResults);
   let check = newArray.some((x) => x.checked);
   if (check) {
-    console.log("ok");
     errorMessage.innerText = "";
     scrollDown();
   } else {
@@ -41,23 +38,22 @@ function validateClick() {
   }
 }
 
-// FUNCTION TO VALIDATE IF SECOND QUESTION ANSWERED
+//VALIDATE IF SECOND QUESTION ANSWERED
 function validateFinal() {
   let answersArray = Array.from(finalResults);
   let check2 = answersArray.some((x) => x.checked);
   if (check2) {
-    console.log(check2);
     error2Message.innerText = "";
-    console.log("ok");
     scrollDown();
   } else {
     error2Message.innerText = "Please select an answer";
   }
 }
 
-// FUNCTION TO CHECK ALL QUESTIONS ANSWERED AND COUNT INPUTS
+//COUNT INPUTS AND DISPLAY RESULTS
 function choiceCounter() {
   const ArrayChecked = Array.from(radioBtns);
+  // mapping through array to see if there are 2 checked values
   const test = ArrayChecked.map((x) => x.checked);
   const lastCheck = test.filter((value) => value === true);
   if (lastCheck.length === 2) {
@@ -66,7 +62,6 @@ function choiceCounter() {
       (acc, val) => acc + Number(val.value),
       0
     );
-    console.log(sum);
     if (sum > 1) {
       console.log(sum);
       containerResults.style.display = "block";
@@ -78,8 +73,8 @@ function choiceCounter() {
       sweetPersonality.style.display = "block";
       saltPersonality.style.display = "none";
     } else {
+      // IF 1 SWEET AND 1 SALT SELECTED, DISPLAY RANDOM RESULT
       let randomNum = Math.random() * 2;
-      console.log(randomNum);
       if (randomNum > 1) {
         containerResults.style.display = "block";
         saltPersonality.style.display = "block";
@@ -117,10 +112,6 @@ function restartQuiz() {
   startGame();
 }
 
-window.onbeforeunload = function () {
-  window.scrollTo(0, 0);
-};
-
 // START GAME AND LISTEN TO CLICKS
 function startGame() {
   startBtn.addEventListener("click", scrollDown);
@@ -131,4 +122,9 @@ function startGame() {
     resetBtn.addEventListener("click", restartQuiz);
   });
 }
+
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+};
+
 startGame();
